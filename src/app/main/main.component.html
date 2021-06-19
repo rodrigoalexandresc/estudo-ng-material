@@ -1,0 +1,19 @@
+
+<div class="main">
+    <p>main works!</p>
+
+    <mat-form-field>
+        <mat-label>Text to send</mat-label>
+        <input matInput type="text" placeholder="text" [(ngModel)]="mainText" (keyup)="sendText()">    
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="sendText()">Send</button>
+
+    <mat-card>
+        <app-detail1></app-detail1>
+    </mat-card>
+    
+    <mat-card>
+        <app-detail2></app-detail2>
+    </mat-card>    
+</div>
+
