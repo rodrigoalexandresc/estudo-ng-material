@@ -1,11 +1,27 @@
-<p>detail1 works!</p>
+<h1>Resultados</h1>
 
 <div>
-    {{text}}
+    <span class="span-label">Contador de busca: </span>
+    <span>{{contador}}</span>        
 </div>
 
 <div>
-    {{contador}}
+    <span class="span-label">Driver name: </span>
+    <span>{{driverSelected.driver}}</span>
 </div>
 
+<table mat-table [dataSource]="driverSelected.results">
+    <ng-container matColumnDef="season">
+        <th mat-header-cell *matHeaderCellDef> Season </th>
+        <td mat-cell *matCellDef="let element"> {{element.season}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="wins">
+        <th mat-header-cell *matHeaderCellDef> Wins </th>
+        <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+    </ng-container>  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
