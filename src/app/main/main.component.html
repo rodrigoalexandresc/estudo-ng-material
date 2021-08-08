@@ -6,14 +6,18 @@
         <mat-label>Text to send</mat-label>
         <input matInput type="text" placeholder="text" [(ngModel)]="mainText" (keyup)="sendText()">    
     </mat-form-field>
-    <button mat-raised-button color="accent" (click)="sendText()">Send</button>
+    <button mat-raised-button color="accent" (click)="sendText()">Enviar requisição</button>
 
     <mat-card>
-        <app-detail1></app-detail1>
+        <app-detail1 (seasonSelected)="detail2.setSeason($event)"></app-detail1>
     </mat-card>
     
     <mat-card>
-        <app-detail2></app-detail2>
+        <app-detail2 #detail2></app-detail2>
     </mat-card>    
+
+    <mat-card>
+        <app-demo-autocomplete></app-demo-autocomplete>
+    </mat-card>
 </div>
 

@@ -8,15 +8,17 @@ import { MaterialModule } from './material/material.module';
 import { MainComponent } from './main/main.component';
 import { Detail1Component } from './detail1/detail1.component';
 import { Detail2Component } from './detail2/detail2.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DemoAutocompleteComponent } from './demo-autocomplete/demo-autocomplete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     Detail1Component,
-    Detail2Component
+    Detail2Component,
+    DemoAutocompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
