@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaceResult, SeasonResult } from '../detail1/entities/driver-results';
 import { MainService } from '../main.service';
 
 @Component({
@@ -19,5 +20,11 @@ export class Detail2Component implements OnInit {
 
   text: string = "";
   contador: number = 0;  
+  data: Array<RaceResult> = [];
+
+  setSeason(seasonResult: SeasonResult) {
+    this.data = seasonResult.races;
+    console.log(this.data);
+  }
 
 }

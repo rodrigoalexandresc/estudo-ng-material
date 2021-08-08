@@ -10,9 +10,9 @@ import * as data from '../../assets/results.json';
 export class DriverResultsService {
   private data: Array<DriverResults> = (data as any).default;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getResults(): DriverResults[] {
-    return this.data;
+  getResults(): Observable<Array<DriverResults>> {
+    return this.http.get<any>("http://localhost:3000/results");
   }
 }

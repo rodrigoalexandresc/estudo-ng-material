@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 interface Food {
   value: string;
@@ -10,13 +12,32 @@ interface Food {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+
+  ngOnInit(): void {
+    this.events
+      .pipe(filter(o => o.type === "LOG"))
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {        
+        console.log(data);
+        this.eventLog.push(data);
+      })
+  }  
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }  
+
   title = 'estudo';
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];  
+  isReady: boolean = false;    
+  events: Subject<any> = new Subject();
+  destroy$: Subject<any> = new Subject();
+  eventLog: Array<any> = [];
+
+  testAppReady() {
+     this.isReady = true;
+  }
 }
 
 

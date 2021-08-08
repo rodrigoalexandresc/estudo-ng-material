@@ -11,7 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+    });
   });
 
   it('should create the app', () => {
@@ -30,6 +30,20 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('estudo app is running!');
+    expect(compiled.querySelector('h1').textContent).toContain('Estudo Angular');
   });
+
+  it('should be true', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const appComponent = fixture.componentInstance;
+    appComponent.testAppReady();
+    expect(appComponent.isReady).toBeTrue();
+  });
+
+  it('should persist events of log type', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const appComponent = fixture.componentInstance;
+    appComponent.events.next({ type: "LOG"});
+    expect(appComponent.events)
+  })
 });
